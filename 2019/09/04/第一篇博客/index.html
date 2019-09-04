@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Hello World｜undefined
+        第一篇博客｜undefined
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2019/09/04/hello-world/">
+    <link rel="canonical" href="http://yoursite.com/2019/09/04/第一篇博客/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -137,7 +137,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>Hello World</h1>
+                    <h1>第一篇博客</h1>
                     
                     <span class="meta">
                          作者 Minla
@@ -154,7 +154,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            Hello World
+            第一篇博客
         </span>
     </div>
 </header>
@@ -165,30 +165,55 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+                <h1 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h1><h2 id="一、-下载安装"><a href="#一、-下载安装" class="headerlink" title="一、 下载安装"></a>一、 下载安装</h2><p><code>方式一</code>： 利用npm安装，需要是全局安装-g，命令行：    </p>
+<pre><code>npm install -g hexo-cli</code></pre><p>这种方式从网络下载并安装hexo，且hexo的环境变量自动添加</p>
+<p><code>方式二</code>: 利用 <code>hexo</code> 在 <code>github</code> 上的源码，地址为： </p>
+<pre><code>https://github.com/hexojs/hexo.git</code></pre><p>源码下载后，进入源码hexo目录，执行 <code>npm install</code> 安装hexo，将在源码目录下多出node_modules目录和package-lock.json文件，即安装成功</p>
+<p>这种方式需要将源码 <code>bin</code> 目录配置为全局环境变量，之后才能使用hexo命令</p>
+<p><strong>使用任意一种方式安装完成后使用 <code>hexo version</code> 可查看是否安装成功</strong></p>
+<h2 id="二、-初始化"><a href="#二、-初始化" class="headerlink" title="二、 初始化"></a>二、 初始化</h2><p><code>方式一</code>：有了hexo命令之后，执行：     </p>
+<p><strong>注意: 执行之前选好文件夹，命令会在文件夹下下载安装文件</strong>    </p>
+<pre><code>hexo init</code></pre><p><code>方式二</code>: 该语句其实就是下载安装了hexojs的另一个仓库中的代码，地址为： </p>
+<pre><code>https://github.com/hexojs/hexo-starter.git</code></pre><p>源码下载后，进入源码hexo-starter目录，执行 <code>npm install</code> 安装hexo-starter</p>
+<p>进入子目录themes，继续下载主题源码，具体可参考 <code>https://hexo.io/themes/</code> ，例如默认样式</p>
+<pre><code>https://github.com/hexojs/hexo-theme-landscape.git</code></pre><p>之后在配置文件 <code>_config.yml</code> 中将 theme: 的值改为你的样式目录名称</p>
+<p><strong>用这种方式直接下载安装源码也可</strong></p>
+<h2 id="三、-新建博客"><a href="#三、-新建博客" class="headerlink" title="三、 新建博客"></a>三、 新建博客</h2><p>命令行： </p>
+<pre><code>hexo new &quot;文章名称&quot;</code></pre><p>实际是在(二)中的目录 /source/_posts 下生成了一个MarkDown文件    </p>
+<p><strong>熟悉MarkDown的可以直接使用MarkDown编辑md文件，然后将文件放至该目录</strong></p>
+<h2 id="四、-本地浏览"><a href="#四、-本地浏览" class="headerlink" title="四、 本地浏览"></a>四、 本地浏览</h2><ol>
+<li><p>启动本地localhost，启动后 <code>_config.yml</code> 配置修改不能刷新，刷新需要在命令行 <code>ctrl + c</code> 关闭再重新执行该命令，命令行：        </p>
+<pre><code>注意：此时启动服务直接访问localhost:4000会是空界面，必须用步骤2生成静态网站
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+hexo server</code></pre></li>
+</ol>
+<ol start="2">
+<li><p>生成静态网站，命令行：    </p>
+<pre><code>hexo generate</code></pre></li>
+<li><p>访问 localhost:4000</p>
+</li>
+</ol>
+<h2 id="五、-关联github"><a href="#五、-关联github" class="headerlink" title="五、 关联github"></a>五、 关联github</h2><p><strong>建议不使用hexo-git插件，直接建立 <code>用户名.github.io</code> 仓库，直接提交步骤二的目录下的public目录，之后自行用git命令行管理</strong></p>
+<p>插件使用： 懒得写  参考 <a href="https://hexo.io/plugins/" target="_blank" rel="noopener">https://hexo.io/plugins/</a></p>
+<pre><code>插件源码地址  https://github.com/hexojs/hexo-deployer-git</code></pre><p>看Readme.md</p>
+<pre><code>命令有  npm install hexo-deployer-git --save
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+之后还有配置很多 `_config.yml` 中的参数
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+最后使用   hexo deploy 上传， 还很不好管理commit信息</code></pre><p><strong>建议还是用git自己管理吧</strong></p>
+<p>最后访问 <code>https://用户名.github.io</code> 查看，这和hexo一点关系都没有，这是github独立的，只要你有仓库<code>用户名.github.io</code>，就能访问那个地址</p>
+<h2 id="六、-关联自己域名"><a href="#六、-关联自己域名" class="headerlink" title="六、 关联自己域名"></a>六、 关联自己域名</h2><p>  不会</p>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    
-                    <li class="next">
-                        <a href="/2019/09/04/第一篇博客/" data-toggle="tooltip" data-placement="top"
-                           title="第一篇博客">Next Post &rarr;</a>
+                    <li class="previous">
+                        <a href="/2019/09/04/hello-world/" data-toggle="tooltip" data-placement="top"
+                           title="Hello World">&larr; Previous Post</a>
                     </li>
+                    
                     
                 </ul>
 
@@ -206,7 +231,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo安装"><span class="toc-text">hexo安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、-下载安装"><span class="toc-text">一、 下载安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、-初始化"><span class="toc-text">二、 初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、-新建博客"><span class="toc-text">三、 新建博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、-本地浏览"><span class="toc-text">四、 本地浏览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、-关联github"><span class="toc-text">五、 关联github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、-关联自己域名"><span class="toc-text">六、 关联自己域名</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
