@@ -14,17 +14,18 @@
 <meta name="author" content="Minla">
 
 
-    
-    
 
-
-<meta property="og:type" content="website">
+<meta name="description" content="Android进程间通信1. 进程间通信，首先就是想到aidl，但是aidl文件并不是任意一个进程，它只是定义我们的app和共享进程之间的桥梁设计，里面有我们的app可以使用的方法，例如获取共享进程的版本信息、当前连接着共享进程的app个数、启动共享进程中的某个功能等等。 2. 这里的共享进程其实就是一个Android四大组件之一的Service，它就是通过aidl中定义的桥梁和我们的可以是很多a">
+<meta property="og:type" content="article">
 <meta property="og:title" content="拉风的名字 Minla">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/11/07/Android进程间通信浅析与确保只使用一个进程服务/index.html">
 <meta property="og:site_name" content="拉风的名字 Minla">
+<meta property="og:description" content="Android进程间通信1. 进程间通信，首先就是想到aidl，但是aidl文件并不是任意一个进程，它只是定义我们的app和共享进程之间的桥梁设计，里面有我们的app可以使用的方法，例如获取共享进程的版本信息、当前连接着共享进程的app个数、启动共享进程中的某个功能等等。 2. 这里的共享进程其实就是一个Android四大组件之一的Service，它就是通过aidl中定义的桥梁和我们的可以是很多a">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-07T03:42:36.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="拉风的名字 Minla">
+<meta name="twitter:description" content="Android进程间通信1. 进程间通信，首先就是想到aidl，但是aidl文件并不是任意一个进程，它只是定义我们的app和共享进程之间的桥梁设计，里面有我们的app可以使用的方法，例如获取共享进程的版本信息、当前连接着共享进程的app个数、启动共享进程中的某个功能等等。 2. 这里的共享进程其实就是一个Android四大组件之一的Service，它就是通过aidl中定义的桥梁和我们的可以是很多a">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -52,8 +53,6 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
@@ -67,8 +66,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -258,9 +257,7 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-Android进程间通信浅析与确保只使用一个进程服务" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Android进程间通信浅析与确保只使用一个进程服务" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2019/11/07/Android进程间通信浅析与确保只使用一个进程服务/" class="article-date">
@@ -359,302 +356,85 @@ private final ServiceConnection o3drServicesConnection = new ServiceConnection()
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016深圳小梅沙-2019回忆记录" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/09/20/2016深圳小梅沙-2019回忆记录/" class="article-date">
-      <time datetime="2019-09-20T07:45:01.866Z" itemprop="datePublished">2019-09-20</time>
-</a>
-
-
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2019/11/07/Android进程间通信浅析与确保只使用一个进程服务/"></a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">Minla</a></p>
+        <p><span>Created:</span>2019-11-07, 09:31:09</p>
+        <p><span>Updated:</span>2019-11-07, 11:42:36</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2019/11/07/Android进程间通信浅析与确保只使用一个进程服务/" title="">http://yoursite.com/2019/11/07/Android进程间通信浅析与确保只使用一个进程服务/</a>
+            <span class="copy-path" data-clipboard-text="From http://yoursite.com/2019/11/07/Android进程间通信浅析与确保只使用一个进程服务/　　By Minla" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
     </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="小梅沙"><a href="#小梅沙" class="headerlink" title="小梅沙"></a>小梅沙</h1><h2 id="M180路"><a href="#M180路" class="headerlink" title="M180路"></a>M180路</h2><p><strong>起：风和日丽北(公交站)</strong></p>
-<p><strong>终：小梅沙(公交站)</strong></p>
-<p><strong>票价：8元</strong></p>
-<h1 id="酒店"><a href="#酒店" class="headerlink" title="酒店"></a>酒店</h1><p><strong>好像都在公交站往西，十字路口左转的那条街上(人民路)</strong></p>
-<p><strong>记不得</strong></p>
-<h1 id="吃饭"><a href="#吃饭" class="headerlink" title="吃饭"></a>吃饭</h1><p><strong>记不得</strong></p>
-<h1 id="超市"><a href="#超市" class="headerlink" title="超市"></a>超市</h1><p><strong>记不得</strong></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
 
 
 
-
-
-
-
-
-
-  
-    <article id="post-糟糕的地铁" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/09/10/糟糕的地铁/" class="article-date">
-      <time datetime="2019-09-10T01:58:38.000Z" itemprop="datePublished">2019-09-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <nav id="article-nav">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/10/糟糕的地铁/">糟糕的地铁</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-今早下雨"><a href="#一-今早下雨" class="headerlink" title="一. 今早下雨"></a>一. 今早下雨</h2><p>&emsp;&emsp;昨晚刚下班，5:30，在公司窗口亲眼看着第一波那个大的雨滴，没想法到第二天还是一直下，7点起床，想着今天早点走，免的地铁挤甚至迟到，想想地铁上都是带把湿伞就可怕。</p>
-<p>&emsp;&emsp;起来去厕所，看见门关着，里面灯开着估计有人，就回屋了，又一想得赶紧走，心想离地铁站也不远，直接去地铁站上厕所就好，就去厨房洗了把脸，洗完后收拾收拾关了门，又看了下卫生间，能上就上了，结果还是那样，只好拿着伞出了门。</p>
-<p>&emsp;&emsp;出小区大门，鞋带开了，右脚，绑好赶紧去地铁站。</p>
-<p>&emsp;&emsp;来到地铁，车没来，早上一般三分钟一趟，鞋带还开了，又是右脚，绑好，想着上完厕所说不定正好赶上，结果一找厕所在地铁站的另一头，没办法只能过去上，走到一半，车来了，7:22，看着那车上的人那叫一个少啊，上完厕所反正是来不及上这趟了。</p>
-<h2 id="二-地铁智障1"><a href="#二-地铁智障1" class="headerlink" title="二. 地铁智障1"></a>二. 地铁智障1</h2><p>&emsp;&emsp;7:25，第二趟车来了，车头位置一般人也不多，以前也经常坐，上车座位对的走廊人也满了，也只能站在门口，想着往里站站，后面还会上很多人，就在门口对的那个柱子的右侧那块。</p>
-<p>&emsp;&emsp;我上的时候看见那煞笔还往前走了走，就想着可能他过一两站就下了，就挨着他站在他前面，想着等他走了我就过后面，结果好几站过去了，人越来越多，那煞笔还在那，我是只能和那煞笔越来越近，最后也只是挤的他往后挪了挪，中间我都看到他后面那个大叔嫌靠的座位侧面的玻璃那个角不舒服还做了做活动。</p>
-<p>&emsp;&emsp;他往后挪了那么多，后面位置还是很大，后来人越来越多，还好左侧的姑娘让了点位置，我才能又往里挪了些。</p>
-<p>&emsp;&emsp;我下车的前两站，换乘站，下车的人不少，他后面那大叔要下车，就过车门口了，后面总算站开了，我也站在他左侧，算第二排的位置了吧，结果那煞笔居然也往前走了一大步那距离，都算第三排了。大叔靠门那位置被旁边的人靠过去了，也是我能到第二排的原因。我心想这货可能也下车，结果并没有，换乘站上车的人也不少，那货硬是能卡着那么大的地方不动，我后面也有站的人，我还再往左了些想着后面的人站我旁边第二排，也就是那煞笔后后面那么大的空地，结果后面的人看见也没过去，这煞笔站的位置真他们的尴尬。</p>
-<p>&emsp;&emsp;最后我到站了，这煞笔还站在那，后面还是那么大位置，我从霍营到北土城啊。</p>
-<h2 id="三-地铁智障2"><a href="#三-地铁智障2" class="headerlink" title="三. 地铁智障2"></a>三. 地铁智障2</h2><p>&emsp;&emsp;出了车头第一节车厢，北土城是有栏杆的，需要往车来的方向走走才能有个口过去然后去换乘，到口的时候车门开始“嘀嘀嘀”响，是要关门了，这时候我看见侧面一个人狂奔，最后还是上了车。</p>
-<p>&emsp;&emsp;也就是这时候早，下北土城的人还不是特别多，要不然我走不到栏杆口门就关了，更别说那人能穿过人上车，但是这人并不是我要说的智障，我觉得他还挺幸运的，赶上了那趟车。</p>
-<p>&emsp;&emsp;我要说的智障是走我前面那个，正常人看见旁边有人冲着上车，都会让一让，让他先过去，但那煞笔一心低头玩手机，最后应该是被冲的那人擦了下，最后手机没拿稳，啪嚓掉地上了。也很奇怪，我看见赶地铁那人人都上去了，车门都关了，那不长眼的手机才掉，还连着耳机，摔地上的声音真的还挺响的。心里默默喊了句Nice，冲地铁的人干的漂亮，摔手机的连那人都没看见，更别说去追人家理论了，人都上车了，给这种人点教训是真的好。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/雨/">雨</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/09/04/hello-world/" class="article-date">
-      <time datetime="2019-09-04T06:10:26.818Z" itemprop="datePublished">2019-09-04</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/04/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-第一篇博客" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/09/04/第一篇博客/" class="article-date">
-      <time datetime="2019-09-04T02:18:03.000Z" itemprop="datePublished">2019-09-04</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/09/20/2016深圳小梅沙-2019回忆记录/">
+                    
+                </a>
+            </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/04/第一篇博客/">第一篇博客</a>
-    </h1>
-  
+    </nav>
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h1><h2 id="一、-下载安装"><a href="#一、-下载安装" class="headerlink" title="一、 下载安装"></a>一、 下载安装</h2><p><code>方式一</code>： 利用npm安装，需要是全局安装-g，命令行：    </p>
-<pre><code>npm install -g hexo-cli</code></pre><p>这种方式从网络下载并安装hexo，且hexo的环境变量自动添加</p>
-<p><code>方式二</code>: 利用 <code>hexo</code> 在 <code>github</code> 上的源码，地址为： </p>
-<pre><code>https://github.com/hexojs/hexo.git</code></pre><p>源码下载后，进入源码hexo目录，执行 <code>npm install</code> 安装hexo，将在源码目录下多出node_modules目录和package-lock.json文件，即安装成功</p>
-<p>这种方式需要将源码 <code>bin</code> 目录配置为全局环境变量，之后才能使用hexo命令</p>
-<p><strong>使用任意一种方式安装完成后使用 <code>hexo version</code> 可查看是否安装成功</strong></p>
-<h2 id="二、-初始化"><a href="#二、-初始化" class="headerlink" title="二、 初始化"></a>二、 初始化</h2><p><code>方式一</code>：有了hexo命令之后，执行：     </p>
-<p><strong>注意: 执行之前选好文件夹，命令会在文件夹下下载安装文件</strong>    </p>
-<pre><code>hexo init</code></pre><p><code>方式二</code>: 该语句其实就是下载安装了hexojs的另一个仓库中的代码，地址为： </p>
-<pre><code>https://github.com/hexojs/hexo-starter.git</code></pre><p>源码下载后，进入源码hexo-starter目录，执行 <code>npm install</code> 安装hexo-starter</p>
-<p>进入子目录themes，继续下载主题源码，具体可参考 <code>https://hexo.io/themes/</code> ，例如默认样式</p>
-<pre><code>https://github.com/hexojs/hexo-theme-landscape.git</code></pre><p>之后在配置文件 <code>_config.yml</code> 中将 theme: 的值改为你的样式目录名称</p>
-<p><strong>用这种方式直接下载安装源码也可</strong></p>
-<h2 id="三、-新建博客"><a href="#三、-新建博客" class="headerlink" title="三、 新建博客"></a>三、 新建博客</h2><p>命令行： </p>
-<pre><code>hexo new &quot;文章名称&quot;</code></pre><p>实际是在(二)中的目录 /source/_posts 下生成了一个MarkDown文件    </p>
-<p><strong>熟悉MarkDown的可以直接使用MarkDown编辑md文件，然后将文件放至该目录</strong></p>
-<h2 id="四、-本地浏览"><a href="#四、-本地浏览" class="headerlink" title="四、 本地浏览"></a>四、 本地浏览</h2><ol>
-<li><p>启动本地localhost，启动后 <code>_config.yml</code> 配置修改不能刷新，刷新需要在命令行 <code>ctrl + c</code> 关闭再重新执行该命令，命令行：        </p>
-<pre><code>注意：此时启动服务直接访问localhost:4000会是空界面，必须用步骤2生成静态网站
-
-hexo server</code></pre></li>
-</ol>
-<ol start="2">
-<li><p>生成静态网站，命令行：    </p>
-<pre><code>hexo generate</code></pre></li>
-<li><p>访问 localhost:4000</p>
-</li>
-</ol>
-<h2 id="五、-关联github"><a href="#五、-关联github" class="headerlink" title="五、 关联github"></a>五、 关联github</h2><p><strong>建议不使用hexo-git插件，直接建立 <code>用户名.github.io</code> 仓库，直接提交步骤二的目录下的public目录，之后自行用git命令行管理</strong></p>
-<p>插件使用： 懒得写  参考 <a href="https://hexo.io/plugins/" target="_blank" rel="noopener">https://hexo.io/plugins/</a></p>
-<pre><code>插件源码地址  https://github.com/hexojs/hexo-deployer-git</code></pre><p>看Readme.md</p>
-<pre><code>命令有  npm install hexo-deployer-git --save
-
-之后还有配置很多 `_config.yml` 中的参数
-
-最后使用   hexo deploy 上传， 还很不好管理commit信息</code></pre><p><strong>建议还是用git自己管理吧</strong></p>
-<p>最后访问 <code>https://用户名.github.io</code> 查看，这和hexo一点关系都没有，这是github独立的，只要你有仓库<code>用户名.github.io</code>，就能访问那个地址</p>
-<h2 id="六、-关联自己域名"><a href="#六、-关联自己域名" class="headerlink" title="六、 关联自己域名"></a>六、 关联自己域名</h2><p>  不会</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
   
 </article>
 
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android进程间通信"><span class="toc-number">1.</span> <span class="toc-text">Android进程间通信</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-aidl文件"><span class="toc-number">1.1.</span> <span class="toc-text">一. aidl文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Stub-asInterface-android-os-IBinder-obj"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. Stub.asInterface(android.os.IBinder obj)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-asBinder"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. asBinder()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-内部静态抽象类Stub"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. 内部静态抽象类Stub</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-共享进程Service"><span class="toc-number">1.2.</span> <span class="toc-text">二. 共享进程Service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-怎么确保很多App使用的都是同一个共享进程Service，而不是又重新启动了一个新的Service，也就是正确的绑定这个服务才是最重要的"><span class="toc-number">1.3.</span> <span class="toc-text">三. 怎么确保很多App使用的都是同一个共享进程Service，而不是又重新启动了一个新的Service，也就是正确的绑定这个服务才是最重要的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-先来看-bindService-Intent-service-NonNull-ServiceConnection-conn-BindServiceFlags-int-flags-的三个参数-第二个参数可以在-（一）-中的-第1小点-中知道如何创建及作用，第三个参数一般传-Context-BIND-AUTO-CREATE-常量，所以要想做好绑定都是在第一个参数Intent的处理上"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 先来看 bindService(Intent service, @NonNull ServiceConnection conn, @BindServiceFlags int flags); 的三个参数,第二个参数可以在 （一） 中的 第1小点 中知道如何创建及作用，第三个参数一般传 Context.BIND_AUTO_CREATE 常量，所以要想做好绑定都是在第一个参数Intent的处理上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-创建Intent传递一个action，标识共享进程的，在AndroidManifest-xml文件中注册是定义；通过PackageManger和这个Intent是可以查到这个共享进程的Service启动个数的，如果已经创建，可以改变Intent的设置直接使用这个已启动的Service"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 创建Intent传递一个action，标识共享进程的，在AndroidManifest.xml文件中注册是定义；通过PackageManger和这个Intent是可以查到这个共享进程的Service启动个数的，如果已经创建，可以改变Intent的设置直接使用这个已启动的Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-虽然是改变了Intent的设置来使用已存在的Service，但是当我们继续启动，继续查询List的个数时，还是会发现个数在不断的增加，这里处理的关键就是上面的-DroidPlannerService-enableDroidPlannerService-context-true-这句话。"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 虽然是改变了Intent的设置来使用已存在的Service，但是当我们继续启动，继续查询List的个数时，还是会发现个数在不断的增加，这里处理的关键就是上面的 DroidPlannerService.enableDroidPlannerService(context, true); 这句话。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-上面的方法通俗的讲就是是否允许这个共享进程启动，第二个参数true即允许，false即不允许，首次启动一定设为true，如果只在这里设置，当第一个app启动成功后，不断开，后面的app都可以启动成功，但是断开后，别的app都无法绑定成功，所以在共享进程Service的onDestory生命周期中调用-enableDroidPlannerService-getApplicationContext-false"><span class="toc-number">1.3.4.</span> <span class="toc-text">4. 上面的方法通俗的讲就是是否允许这个共享进程启动，第二个参数true即允许，false即不允许，首次启动一定设为true，如果只在这里设置，当第一个app启动成功后，不断开，后面的app都可以启动成功，但是断开后，别的app都无法绑定成功，所以在共享进程Service的onDestory生命周期中调用 enableDroidPlannerService(getApplicationContext(), false);</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"　| 拉风的名字 Minla　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
 
 
 
@@ -662,9 +442,33 @@ hexo server</code></pre></li>
 
 
 
+    
 
-  
-  
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/09/20/2016深圳小梅沙-2019回忆记录/" title="Next: ">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/Android进程间通信浅析与确保只使用一个进程服务/">Android进程间通信浅析与确保只使用一个进程服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/20/2016深圳小梅沙-2019回忆记录/">2016深圳小梅沙-2019回忆记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/10/糟糕的地铁/">糟糕的地铁</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/04/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/04/第一篇博客/">第一篇博客</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
