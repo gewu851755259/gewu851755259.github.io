@@ -15,17 +15,16 @@
 
 
 
-<meta name="description" content="Android导航栏实现1. TabLayout&lt;com.google.android.material.tabs.TabLayout     android:id&#x3D;&quot;@+id&#x2F;tl_personal_menu&quot;     android:layout_width&#x3D;&quot;match_parent&quot;     android:layout_height&#x3D;&amp;quo">
+<meta name="description" content="一、MVCView布局文件全部都属于View，但是不是只要有布局文件就可以在手机上显示，要有Avtivity的配合，所以Activity中也必不可少的有View的部分。 ControllerController是控制器，都在Activity中，常见的功能有:  给按钮添加点击事件； 给View设置文字、图片等。  ModelModel是管理数据模型，例如：  网络请求获取到的数据，通过回调传给Co">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android导航栏实现之TabLayout+ViewPager">
-<meta property="og:url" content="https://gewu851755259.github.io/2019/11/07/Android%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%AE%9E%E7%8E%B0%E4%B9%8BTabLayout-ViewPager/index.html">
+<meta property="og:title" content="MVC|MVP|MVVM学习笔记">
+<meta property="og:url" content="https://gewu851755259.github.io/2020/06/29/MVC%E3%80%81MVP%E3%80%81MVVM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="拉风的名字 Minla">
-<meta property="og:description" content="Android导航栏实现1. TabLayout&lt;com.google.android.material.tabs.TabLayout     android:id&#x3D;&quot;@+id&#x2F;tl_personal_menu&quot;     android:layout_width&#x3D;&quot;match_parent&quot;     android:layout_height&#x3D;&amp;quo">
+<meta property="og:description" content="一、MVCView布局文件全部都属于View，但是不是只要有布局文件就可以在手机上显示，要有Avtivity的配合，所以Activity中也必不可少的有View的部分。 ControllerController是控制器，都在Activity中，常见的功能有:  给按钮添加点击事件； 给View设置文字、图片等。  ModelModel是管理数据模型，例如：  网络请求获取到的数据，通过回调传给Co">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-11-07T06:11:18.000Z">
-<meta property="article:modified_time" content="2019-11-07T06:14:02.288Z">
+<meta property="article:published_time" content="2020-06-29T05:55:38.000Z">
+<meta property="article:modified_time" content="2021-02-25T05:57:31.649Z">
 <meta property="article:author" content="Minla">
-<meta property="article:tag" content="晴(立冬前一天)">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -60,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Android导航栏实现之TabLayout+ViewPager | 拉风的名字 Minla</title>
+<title>MVC|MVP|MVVM学习笔记 | 拉风的名字 Minla</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -260,11 +259,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-Android导航栏实现之TabLayout-ViewPager" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-MVC、MVP、MVVM学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/11/07/Android%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%AE%9E%E7%8E%B0%E4%B9%8BTabLayout-ViewPager/" class="article-date">
-      <time datetime="2019-11-07T06:11:18.000Z" itemprop="datePublished">2019-11-07</time>
+      <a href="/2020/06/29/MVC%E3%80%81MVP%E3%80%81MVVM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+      <time datetime="2020-06-29T05:55:38.000Z" itemprop="datePublished">2020-06-29</time>
 </a>
 
 
@@ -279,7 +278,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Android导航栏实现之TabLayout+ViewPager
+      MVC|MVP|MVVM学习笔记
     </h1>
   
 
@@ -289,10 +288,6 @@
         
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%99%B4-%E7%AB%8B%E5%86%AC%E5%89%8D%E4%B8%80%E5%A4%A9/" rel="tag">晴(立冬前一天)</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -300,81 +295,34 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="Android导航栏实现"><a href="#Android导航栏实现" class="headerlink" title="Android导航栏实现"></a>Android导航栏实现</h1><h2 id="1-TabLayout"><a href="#1-TabLayout" class="headerlink" title="1. TabLayout"></a>1. TabLayout</h2><pre><code>&lt;com.google.android.material.tabs.TabLayout
-    android:id=&quot;@+id/tl_personal_menu&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;@dimen/qb_px_195&quot;
-    app:layout_constraintTop_toBottomOf=&quot;@+id/rl_personal_message&quot;
-    app:tabBackground=&quot;@color/white&quot;
-    app:tabIndicatorColor=&quot;@color/green&quot;
-    app:tabIndicatorHeight=&quot;@dimen/qb_px_10&quot;
-    app:tabMode=&quot;scrollable&quot;
-    app:tabSelectedTextColor=&quot;@color/red&quot;
-    app:tabTextAppearance=&quot;@android:style/TextAppearance.Holo.Medium&quot;
-    app:tabTextColor=&quot;@color/black&quot;&gt;
-
-&lt;/com.google.android.material.tabs.TabLayout&gt;
-</code></pre>
-<p>可能需要在build.gradle中添加依赖，但不知道添加啥，关系太乱了</p>
-<h2 id="2-ViewPager"><a href="#2-ViewPager" class="headerlink" title="2. ViewPager"></a>2. ViewPager</h2><p><strong>ViewPager的布局和TabLayout是并列关系，并不是将ViewPager放在TabLayout中，TabLayout只是用来存放导航栏Tabs的</strong></p>
-<pre><code>&lt;androidx.viewpager.widget.ViewPager
-    android:id=&quot;@+id/vp_personal_list&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;0dp&quot;
-    app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
-    app:layout_constraintTop_toBottomOf=&quot;@+id/tl_personal_menu&quot; /&gt;
-</code></pre>
-<h2 id="3-PagerAdapter"><a href="#3-PagerAdapter" class="headerlink" title="3. PagerAdapter"></a>3. PagerAdapter</h2><p><strong>ViewPager的Adapter，注意重写方法：</strong></p>
-<pre><code>@Override
-public CharSequence getPageTitle(int position) &#123;
-    return null;                          //页卡标题
-&#125;
-</code></pre>
-<h2 id="4-TabLayout与ViewPager相关联"><a href="#4-TabLayout与ViewPager相关联" class="headerlink" title="4. TabLayout与ViewPager相关联"></a>4. TabLayout与ViewPager相关联</h2><pre><code>v.tl_personal_menu.setupWithViewPager(v.vp_personal_list)
-</code></pre>
-<p><strong>4-1 关联前，自已可以利用如下方法设置导航栏样式：</strong></p>
-<pre><code>if (personalTabImgs.size == personalTabTxts.size) &#123;
-    for (index in personalTabImgs.indices) &#123;
-        val tabView = LayoutInflater.from(context)
-             .inflate(R.layout.tab_personal, v.tl_personal_menu, false)
-        tabView.iv_tab_personal.setImageResource(personalTabImgs[index])
-        tabView.tv_tab_personal.text = personalTabTxts[index]
-
-        val tab = v.tl_personal_menu.newTab()  // 重点是这里的newTab方法
-        // tab.text = personalTabTxts[index]
-        // tab.icon = context!!.resources.getDrawable(personalTabImgs[index], null)
-        tab.customView = tabView
-
-        v.tl_personal_menu.addTab(tab)
-    &#125;
-&#125;
-</code></pre>
-<p><strong>4-2 关联后，之前设置的导航栏样式将被PagerAdapter中的getPageTitle方法返回的字符串所顶替，就是说之前设置的有图片有文字的导航栏Tab会变成只有文字的。</strong></p>
-<p><strong>4-3 想要在关联后导航栏Tab也是自定义的样式，需要在PagerAdapter中写一个自己的方法返回View对象，例如：</strong></p>
-<pre><code>// 在自己的PagerAdapter中写
-@SuppressLint(&quot;InflateParams&quot;)
-public View getPageTitleView(int position) &#123;
-    View tabView = LayoutInflater.from(context)
-            .inflate(R.layout.tab_personal, null);
-    ImageView ivTab = tabView.findViewById(R.id.iv_tab_personal);
-    ivTab.setImageResource(personalTabImgs[position]);
-    TextView tvTab = tabView.findViewById(R.id.tv_tab_personal);
-    tvTab.setText(personalTabTxts[position]);
-    return tabView;
-&#125;
-</code></pre>
-<p><strong>然后在关联之后利用for循环做如下设置，即使在关联后再执行一次 <code>4-1</code> 中的自定义导航栏设置，也是错误的，newTabs只会在Adapter决定的导航Tabs之后继续添加新建的这些Tabs</strong></p>
-<pre><code>//设置自定义tab
-for (i in 0 until v.tl_personal_menu.tabCount) &#123;
-    val tab = v.tl_personal_menu.getTabAt(i)  // 重点是这里的getTabAt方法
-    tab!!.customView = adapter.getPageTitleView(i)
-&#125;
-</code></pre>
-<p>附: 图片和文字自定义的数组</p>
-<pre><code>private var personalTabImgs: IntArray =
-    intArrayOf(R.drawable.avater1, R.drawable.avater2, R.drawable.avater3, R.drawable.avater4)
-private var personalTabTxts: Array&lt;String&gt; = arrayOf(&quot;tab one&quot;, &quot;tab two&quot;, &quot;tab three&quot;, &quot;tab four&quot;)    
-</code></pre>
+        <h1 id="一、MVC"><a href="#一、MVC" class="headerlink" title="一、MVC"></a>一、MVC</h1><h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>布局文件全部都属于View，但是不是只要有布局文件就可以在手机上显示，要有Avtivity的配合，所以Activity中也必不可少的有View的部分。</p>
+<h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><p>Controller是控制器，都在Activity中，常见的功能有:</p>
+<ol>
+<li>给按钮添加点击事件；</li>
+<li>给View设置文字、图片等。</li>
+</ol>
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><p>Model是管理数据模型，例如：</p>
+<ol>
+<li>网络请求获取到的数据，通过回调传给Controller，也就是Activity，然后Activity再将数据设置给View。</li>
+</ol>
+<p>现在Android推出了AndroidViewModel，可以对模型中的数据调用observe方法进行监测，不论是基本数据类型还是自定义bean都可以监测；</p>
+<p>AndroidViewModel相较于自己写的Model:</p>
+<ol>
+<li>省去了对回调的定义</li>
+<li>更容易的去单独管理数据，自己写的Model可能还要调用网络请求的封装方法或者其它方法来获取更新数据</li>
+</ol>
+<h1 id="二、MVP"><a href="#二、MVP" class="headerlink" title="二、MVP"></a>二、MVP</h1><h2 id="Presenter"><a href="#Presenter" class="headerlink" title="Presenter"></a>Presenter</h2><p>Presenter的作用主要是弱化Model，Presenter中具体定义方法调用Model中方法，如果是AndroidViewModel，那么Presenter的作用就<br>是改变AndroidViewModel数据的变化。</p>
+<p>Presenter要能够设置给对用页面的View。</p>
+<p>使用时定义BasePresenter接口，内部定义Presenter的一些通用方法。</p>
+<h2 id="BaseView"><a href="#BaseView" class="headerlink" title="BaseView"></a>BaseView</h2><p>BaseView为一个接口，内部一定要有设置给对其设置Presenter对象的方法。</p>
+<p>最后实现BaseView的一定是Activity，在Activity中可以实例化Presenter，并调用设置Presenter对象的方法将其传递给View。</p>
+<h2 id="Contract"><a href="#Contract" class="headerlink" title="Contract"></a>Contract</h2><p>将一个页面对应的Presenter和BaseView都以内部类的形式组合在Contract中</p>
+<ol>
+<li>定义BasePresenter的子类，其中写对应页面对其Model的数据的获取及改变</li>
+<li>定义子接口继承BaseView，其中丰富对对应页面的View设置文字和图片(数据)的方法，Activity实现子接口，<br>什么时候调用还是在Controller的点击事件或者对AndroidViewModel的数据监测observe方法中。</li>
+</ol>
+<p>好处: 方便管理和查看对Model的获取及改变，方便查看对View的设置都有哪些。</p>
+<p>弊端: 如果页面很复杂，Model的获取及改变很多，View的设置也很多，Contract作为两者的容器会非常庞大臃肿。</p>
 
       
     </div>
@@ -383,13 +331,13 @@ private var personalTabTxts: Array&lt;String&gt; = arrayOf(&quot;tab one&quot;, 
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2019/11/07/Android%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%AE%9E%E7%8E%B0%E4%B9%8BTabLayout-ViewPager/">Android导航栏实现之TabLayout+ViewPager</a></p>
+        <p><span>Title:</span><a href="/2020/06/29/MVC%E3%80%81MVP%E3%80%81MVVM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">MVC|MVP|MVVM学习笔记</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2019-11-07, 14:11:18</p>
-        <p><span>Updated:</span>2019-11-07, 14:14:02</p>
+        <p><span>Created:</span>2020-06-29, 13:55:38</p>
+        <p><span>Updated:</span>2021-02-25, 13:57:31</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2019/11/07/Android%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%AE%9E%E7%8E%B0%E4%B9%8BTabLayout-ViewPager/" title="Android导航栏实现之TabLayout+ViewPager">https://gewu851755259.github.io/2019/11/07/Android%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%AE%9E%E7%8E%B0%E4%B9%8BTabLayout-ViewPager/</a>
-            <span class="copy-path" data-clipboard-text="From https://gewu851755259.github.io/2019/11/07/Android%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%AE%9E%E7%8E%B0%E4%B9%8BTabLayout-ViewPager/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2020/06/29/MVC%E3%80%81MVP%E3%80%81MVVM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="MVC|MVP|MVVM学习笔记">https://gewu851755259.github.io/2020/06/29/MVC%E3%80%81MVP%E3%80%81MVVM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a>
+            <span class="copy-path" data-clipboard-text="From https://gewu851755259.github.io/2020/06/29/MVC%E3%80%81MVP%E3%80%81MVVM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -402,15 +350,15 @@ private var personalTabTxts: Array&lt;String&gt; = arrayOf(&quot;tab one&quot;, 
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/11/07/2016%E6%B7%B1%E5%9C%B3%E5%B0%8F%E6%A2%85%E6%B2%99-2019%E5%9B%9E%E5%BF%86%E8%AE%B0%E5%BD%95/">
-                    2016深圳小梅沙-2019回忆记录
+                <a href="/2021/02/25/2021-FLAG/">
+                    2021-FLAG
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/11/07/Android%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%B5%85%E6%9E%90%E4%B8%8E%E7%A1%AE%E4%BF%9D%E5%8F%AA%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1/">
-                    Android进程间通信浅析与确保只使用一个进程服务
+                <a href="/2019/11/07/2016%E6%B7%B1%E5%9C%B3%E5%B0%8F%E6%A2%85%E6%B2%99-2019%E5%9B%9E%E5%BF%86%E8%AE%B0%E5%BD%95/">
+                    2016深圳小梅沙-2019回忆记录
                 </a>
             </div>
         
@@ -422,7 +370,7 @@ private var personalTabTxts: Array&lt;String&gt; = arrayOf(&quot;tab one&quot;, 
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.</span> <span class="toc-text">Android导航栏实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-TabLayout"><span class="toc-number">1.1.</span> <span class="toc-text">1. TabLayout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ViewPager"><span class="toc-number">1.2.</span> <span class="toc-text">2. ViewPager</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-PagerAdapter"><span class="toc-number">1.3.</span> <span class="toc-text">3. PagerAdapter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-TabLayout%E4%B8%8EViewPager%E7%9B%B8%E5%85%B3%E8%81%94"><span class="toc-number">1.4.</span> <span class="toc-text">4. TabLayout与ViewPager相关联</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81MVC"><span class="toc-number">1.</span> <span class="toc-text">一、MVC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#View"><span class="toc-number">1.1.</span> <span class="toc-text">View</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Controller"><span class="toc-number">1.2.</span> <span class="toc-text">Controller</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Model"><span class="toc-number">1.3.</span> <span class="toc-text">Model</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81MVP"><span class="toc-number">2.</span> <span class="toc-text">二、MVP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Presenter"><span class="toc-number">2.1.</span> <span class="toc-text">Presenter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BaseView"><span class="toc-number">2.2.</span> <span class="toc-text">BaseView</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contract"><span class="toc-number">2.3.</span> <span class="toc-text">Contract</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -458,7 +406,7 @@ private var personalTabTxts: Array&lt;String&gt; = arrayOf(&quot;tab one&quot;, 
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Android导航栏实现之TabLayout+ViewPager　| 拉风的名字 Minla　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"MVC|MVP|MVVM学习笔记　| 拉风的名字 Minla　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -478,7 +426,7 @@ private var personalTabTxts: Array&lt;String&gt; = arrayOf(&quot;tab one&quot;, 
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/11/07/2016%E6%B7%B1%E5%9C%B3%E5%B0%8F%E6%A2%85%E6%B2%99-2019%E5%9B%9E%E5%BF%86%E8%AE%B0%E5%BD%95/" title="Pre: 2016深圳小梅沙-2019回忆记录">
+            <a href="/2021/02/25/2021-FLAG/" title="Pre: 2021-FLAG">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -486,7 +434,7 @@ private var personalTabTxts: Array&lt;String&gt; = arrayOf(&quot;tab one&quot;, 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/11/07/Android%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%B5%85%E6%9E%90%E4%B8%8E%E7%A1%AE%E4%BF%9D%E5%8F%AA%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1/" title="Next: Android进程间通信浅析与确保只使用一个进程服务">
+            <a href="/2019/11/07/2016%E6%B7%B1%E5%9C%B3%E5%B0%8F%E6%A2%85%E6%B2%99-2019%E5%9B%9E%E5%BF%86%E8%AE%B0%E5%BD%95/" title="Next: 2016深圳小梅沙-2019回忆记录">
                 <i class="fa fa-angle-right"></i>
             </a>
         

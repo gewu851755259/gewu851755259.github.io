@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 
     <!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
@@ -8,27 +8,27 @@
     <![endif]-->
 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no">
-<meta name="author" content="Minla">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Minla" />
 
 
 
 <meta name="description" content="Android进程间通信1. 进程间通信，首先就是想到aidl，但是aidl文件并不是任意一个进程，它只是定义我们的app和共享进程之间的桥梁设计，里面有我们的app可以使用的方法，例如获取共享进程的版本信息、当前连接着共享进程的app个数、启动共享进程中的某个功能等等。 2. 这里的共享进程其实就是一个Android四大组件之一的Service，它就是通过aidl中定义的桥梁和我们的可以是很多a">
-<meta name="keywords" content="晴(立冬前一天)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android进程间通信浅析与确保只使用一个进程服务">
-<meta property="og:url" content="http://yoursite.com/2019/11/07/Android进程间通信浅析与确保只使用一个进程服务/index.html">
+<meta property="og:url" content="https://gewu851755259.github.io/2019/11/07/Android%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%B5%85%E6%9E%90%E4%B8%8E%E7%A1%AE%E4%BF%9D%E5%8F%AA%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1/index.html">
 <meta property="og:site_name" content="拉风的名字 Minla">
 <meta property="og:description" content="Android进程间通信1. 进程间通信，首先就是想到aidl，但是aidl文件并不是任意一个进程，它只是定义我们的app和共享进程之间的桥梁设计，里面有我们的app可以使用的方法，例如获取共享进程的版本信息、当前连接着共享进程的app个数、启动共享进程中的某个功能等等。 2. 这里的共享进程其实就是一个Android四大组件之一的Service，它就是通过aidl中定义的桥梁和我们的可以是很多a">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-07T06:13:18.300Z">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-11-07T06:10:58.000Z">
+<meta property="article:modified_time" content="2019-11-07T06:13:18.300Z">
+<meta property="article:author" content="Minla">
+<meta property="article:tag" content="晴(立冬前一天)">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android进程间通信浅析与确保只使用一个进程服务">
-<meta name="twitter:description" content="Android进程间通信1. 进程间通信，首先就是想到aidl，但是aidl文件并不是任意一个进程，它只是定义我们的app和共享进程之间的桥梁设计，里面有我们的app可以使用的方法，例如获取共享进程的版本信息、当前连接着共享进程的app个数、启动共享进程中的某个功能等等。 2. 这里的共享进程其实就是一个Android四大组件之一的Service，它就是通过aidl中定义的桥梁和我们的可以是很多a">
 
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="拉风的名字 Minla" type="application/atom+xml">
@@ -51,7 +51,9 @@
     <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
 
 
+
 <link rel="stylesheet" href="/css/style.css">
+
 
 
 
@@ -90,7 +92,7 @@
 
 
 
-</head></html>
+<meta name="generator" content="Hexo 5.4.0"></head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -101,7 +103,7 @@
             <img src="/img/yeah.jpg" class="animated zoomIn">
         </a>
         <hgroup>
-          <h1 class="header-author"><a href="/">Minla</a></h1>
+          <h1 class="header-author"><a href="/"></a></h1>
         </hgroup>
 
         
@@ -170,9 +172,9 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" href="mailto:gewu851755259@163.com" title="Email"></a>
                             
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" target="_blank" rel="noopener" href="https://github.com/gewu851755259?tab=repositories" title="GitHub"></a>
                             
                                 <a class="fa RSS" href="/atom.xml" title="RSS"></a>
                             
@@ -183,7 +185,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/晴-立冬前一天/">晴(立冬前一天)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/雨/">雨</a></li></ul>
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%81%B0%E9%A5%AD/" rel="tag">恰饭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%99%B4-%E7%AB%8B%E5%86%AC%E5%89%8D%E4%B8%80%E5%A4%A9/" rel="tag">晴(立冬前一天)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9B%A8/" rel="tag">雨</a></li></ul>
                     </div>
                 </section>
                 
@@ -192,11 +194,11 @@
                 <section class="switch-part switch-part3">
                     <div id="js-friends">
                     
-                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
                     
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://pages.github.com/">GitHub</a>
                     
-                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="http://moxfive.xyz/">MOxFIVE</a>
                     
                     </div>
                 </section>
@@ -218,7 +220,7 @@
       <nav id="mobile-nav">
       <div class="overlay">
           <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Minla</a></h1>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
       </div>
     <div class="intrude-less">
         <header id="header" class="inner">
@@ -226,7 +228,7 @@
                 <img src="/img/yeah.jpg" class="animated zoomIn">
             </a>
             <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">Minla</a></h1>
+              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
             </hgroup>
             
             <nav class="header-menu">
@@ -246,9 +248,9 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="mailto:gewu851755259@163.com" title="Email"></a>
                             
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" target="_blank" href="https://github.com/gewu851755259?tab=repositories" title="GitHub"></a>
                             
                                 <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
                             
@@ -261,7 +263,7 @@
       <div class="body-wrap"><article id="post-Android进程间通信浅析与确保只使用一个进程服务" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/11/07/Android进程间通信浅析与确保只使用一个进程服务/" class="article-date">
+      <a href="/2019/11/07/Android%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%B5%85%E6%9E%90%E4%B8%8E%E7%A1%AE%E4%BF%9D%E5%8F%AA%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1/" class="article-date">
       <time datetime="2019-11-07T06:10:58.000Z" itemprop="datePublished">2019-11-07</time>
 </a>
 
@@ -288,7 +290,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/晴-立冬前一天/">晴(立冬前一天)</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%99%B4-%E7%AB%8B%E5%86%AC%E5%89%8D%E4%B8%80%E5%A4%A9/" rel="tag">晴(立冬前一天)</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,80 +304,88 @@
 <p><strong>2. 这里的共享进程其实就是一个Android四大组件之一的Service，它就是通过aidl中定义的桥梁和我们的可以是很多app间进行通信</strong></p>
 <p><strong>3. 可以在github搜索 dronekit-android，它是一套非常完美的进程间通信的示例，它的作用是建立Android设备和无人机(例如PX4)之间的连接以及数据通信。下面的一些示例很多都出自这里。</strong></p>
 <h2 id="一-aidl文件"><a href="#一-aidl文件" class="headerlink" title="一. aidl文件"></a>一. aidl文件</h2><p>好的aidl文件的示例：</p>
-<pre><code>interface IDroidPlannerServices {
+<pre><code>interface IDroidPlannerServices &#123;
     int getServiceVersionCode();
     void releaseDroneApi(IDroneApi droneApi);
     int getApiVersionCode();
     IDroneApi registerDroneApi(IApiListener listener, String appId);
     Bundle[] getConnectedApps(String requesterId);
-}</code></pre><p>定义好aidl文件后，编译即可自动生成同名的java文件，在build/generated/source/aidl目录下</p>
+&#125;
+</code></pre>
+<p>定义好aidl文件后，编译即可自动生成同名的java文件，在build/generated/source/aidl目录下</p>
 <p><strong>这个java文件的每一部分在使用时都至关重要</strong></p>
 <h3 id="1-Stub-asInterface-android-os-IBinder-obj"><a href="#1-Stub-asInterface-android-os-IBinder-obj" class="headerlink" title="1. Stub.asInterface(android.os.IBinder obj)"></a>1. Stub.asInterface(android.os.IBinder obj)</h3><p>这个方法返回此java类的对象，那么它的参数从哪里传，在通过bindService方法连接共享进程的时候有一个ServiceConnection的监听，监听的方法内有一个IBinder对象，该方法就是在绑定共享进程的时候在此监听中使用：</p>
 <pre><code>private IDroidPlannerServices o3drServices;
 
 private final AtomicBoolean isServiceConnecting = new AtomicBoolean(false);
 
-private final ServiceConnection o3drServicesConnection = new ServiceConnection() {
+private final ServiceConnection o3drServicesConnection = new ServiceConnection() &#123;
 
     @Override
-    public void onServiceConnected(ComponentName name, IBinder service) {
+    public void onServiceConnected(ComponentName name, IBinder service) &#123;
         isServiceConnecting.set(false);
 
         o3drServices = IDroidPlannerServices.Stub.asInterface(service);
-        try {
+        try &#123;
             o3drServices.asBinder().linkToDeath(binderDeathRecipient, 0);
             notifyTowerConnected();
-        } catch (RemoteException e) {
+        &#125; catch (RemoteException e) &#123;
             notifyTowerDisconnected();
-        }
-    }
+        &#125;
+    &#125;
 
     @Override
-    public void onServiceDisconnected(ComponentName name) {
+    public void onServiceDisconnected(ComponentName name) &#123;
         isServiceConnecting.set(false);
         notifyTowerDisconnected();
-    }
-};</code></pre><h3 id="2-asBinder"><a href="#2-asBinder" class="headerlink" title="2. asBinder()"></a>2. asBinder()</h3><p>返回IBinder对象，使用可以看到也在上面使用，对其添加了一个app和共享进程之间的连接断开的监听</p>
+    &#125;
+&#125;;
+</code></pre>
+<h3 id="2-asBinder"><a href="#2-asBinder" class="headerlink" title="2. asBinder()"></a>2. asBinder()</h3><p>返回IBinder对象，使用可以看到也在上面使用，对其添加了一个app和共享进程之间的连接断开的监听</p>
 <h3 id="3-内部静态抽象类Stub"><a href="#3-内部静态抽象类Stub" class="headerlink" title="3. 内部静态抽象类Stub"></a>3. 内部静态抽象类Stub</h3><p>实现aidl中定义的桥梁方法的关键类，除了一中的使用，要看它的具体实现子类DPServices，这子类中便是共享进程具体去实现aidl中定义的所有方法。 <code>（其实具体实现还是在共享进程&lt;四大组件之一Service&gt;中，DPServices只是具体的通信代理者，不像aidl只是抽象接口）</code></p>
 <h2 id="二-共享进程Service"><a href="#二-共享进程Service" class="headerlink" title="二. 共享进程Service"></a>二. 共享进程Service</h2><p><strong>没什么好说的，就是干活的</strong></p>
-<h2 id="三-怎么确保很多App使用的都是同一个共享进程Service，而不是又重新启动了一个新的Service，也就是正确的绑定这个服务才是最重要的"><a href="#三-怎么确保很多App使用的都是同一个共享进程Service，而不是又重新启动了一个新的Service，也就是正确的绑定这个服务才是最重要的" class="headerlink" title="三. 怎么确保很多App使用的都是同一个共享进程Service，而不是又重新启动了一个新的Service，也就是正确的绑定这个服务才是最重要的"></a>三. 怎么确保很多App使用的都是同一个共享进程Service，而不是又重新启动了一个新的Service，也就是正确的绑定这个服务才是最重要的</h2><h3 id="1-先来看-bindService-Intent-service-NonNull-ServiceConnection-conn-BindServiceFlags-int-flags-的三个参数-第二个参数可以在-（一）-中的-第1小点-中知道如何创建及作用，第三个参数一般传-Context-BIND-AUTO-CREATE-常量，所以要想做好绑定都是在第一个参数Intent的处理上"><a href="#1-先来看-bindService-Intent-service-NonNull-ServiceConnection-conn-BindServiceFlags-int-flags-的三个参数-第二个参数可以在-（一）-中的-第1小点-中知道如何创建及作用，第三个参数一般传-Context-BIND-AUTO-CREATE-常量，所以要想做好绑定都是在第一个参数Intent的处理上" class="headerlink" title="1. 先来看 bindService(Intent service, @NonNull ServiceConnection conn, @BindServiceFlags int flags); 的三个参数,第二个参数可以在 （一） 中的 第1小点 中知道如何创建及作用，第三个参数一般传 Context.BIND_AUTO_CREATE 常量，所以要想做好绑定都是在第一个参数Intent的处理上"></a>1. 先来看 <code>bindService(Intent service, @NonNull ServiceConnection conn, @BindServiceFlags int flags);</code> 的三个参数,第二个参数可以在 <code>（一）</code> 中的 <code>第1小点</code> 中知道如何创建及作用，第三个参数一般传 <code>Context.BIND_AUTO_CREATE</code> 常量，所以要想做好绑定都是在第一个参数Intent的处理上</h3><h3 id="2-创建Intent传递一个action，标识共享进程的，在AndroidManifest-xml文件中注册是定义；通过PackageManger和这个Intent是可以查到这个共享进程的Service启动个数的，如果已经创建，可以改变Intent的设置直接使用这个已启动的Service"><a href="#2-创建Intent传递一个action，标识共享进程的，在AndroidManifest-xml文件中注册是定义；通过PackageManger和这个Intent是可以查到这个共享进程的Service启动个数的，如果已经创建，可以改变Intent的设置直接使用这个已启动的Service" class="headerlink" title="2. 创建Intent传递一个action，标识共享进程的，在AndroidManifest.xml文件中注册是定义；通过PackageManger和这个Intent是可以查到这个共享进程的Service启动个数的，如果已经创建，可以改变Intent的设置直接使用这个已启动的Service"></a>2. 创建Intent传递一个action，标识共享进程的，在AndroidManifest.xml文件中注册是定义；通过PackageManger和这个Intent是可以查到这个共享进程的Service启动个数的，如果已经创建，可以改变Intent的设置直接使用这个已启动的Service</h3><pre><code>Intent getAvailableServicesInstance(@NonNull final Context context) {
+<h2 id="三-怎么确保很多App使用的都是同一个共享进程Service，而不是又重新启动了一个新的Service，也就是正确的绑定这个服务才是最重要的"><a href="#三-怎么确保很多App使用的都是同一个共享进程Service，而不是又重新启动了一个新的Service，也就是正确的绑定这个服务才是最重要的" class="headerlink" title="三. 怎么确保很多App使用的都是同一个共享进程Service，而不是又重新启动了一个新的Service，也就是正确的绑定这个服务才是最重要的"></a>三. 怎么确保很多App使用的都是同一个共享进程Service，而不是又重新启动了一个新的Service，也就是正确的绑定这个服务才是最重要的</h2><h3 id="1-先来看-bindService-Intent-service-NonNull-ServiceConnection-conn-BindServiceFlags-int-flags-的三个参数-第二个参数可以在-（一）-中的-第1小点-中知道如何创建及作用，第三个参数一般传-Context-BIND-AUTO-CREATE-常量，所以要想做好绑定都是在第一个参数Intent的处理上"><a href="#1-先来看-bindService-Intent-service-NonNull-ServiceConnection-conn-BindServiceFlags-int-flags-的三个参数-第二个参数可以在-（一）-中的-第1小点-中知道如何创建及作用，第三个参数一般传-Context-BIND-AUTO-CREATE-常量，所以要想做好绑定都是在第一个参数Intent的处理上" class="headerlink" title="1. 先来看 bindService(Intent service, @NonNull ServiceConnection conn, @BindServiceFlags int flags); 的三个参数,第二个参数可以在 （一） 中的 第1小点 中知道如何创建及作用，第三个参数一般传 Context.BIND_AUTO_CREATE 常量，所以要想做好绑定都是在第一个参数Intent的处理上"></a>1. 先来看 <code>bindService(Intent service, @NonNull ServiceConnection conn, @BindServiceFlags int flags);</code> 的三个参数,第二个参数可以在 <code>（一）</code> 中的 <code>第1小点</code> 中知道如何创建及作用，第三个参数一般传 <code>Context.BIND_AUTO_CREATE</code> 常量，所以要想做好绑定都是在第一个参数Intent的处理上</h3><h3 id="2-创建Intent传递一个action，标识共享进程的，在AndroidManifest-xml文件中注册是定义；通过PackageManger和这个Intent是可以查到这个共享进程的Service启动个数的，如果已经创建，可以改变Intent的设置直接使用这个已启动的Service"><a href="#2-创建Intent传递一个action，标识共享进程的，在AndroidManifest-xml文件中注册是定义；通过PackageManger和这个Intent是可以查到这个共享进程的Service启动个数的，如果已经创建，可以改变Intent的设置直接使用这个已启动的Service" class="headerlink" title="2. 创建Intent传递一个action，标识共享进程的，在AndroidManifest.xml文件中注册是定义；通过PackageManger和这个Intent是可以查到这个共享进程的Service启动个数的，如果已经创建，可以改变Intent的设置直接使用这个已启动的Service"></a>2. 创建Intent传递一个action，标识共享进程的，在AndroidManifest.xml文件中注册是定义；通过PackageManger和这个Intent是可以查到这个共享进程的Service启动个数的，如果已经创建，可以改变Intent的设置直接使用这个已启动的Service</h3><pre><code>Intent getAvailableServicesInstance(@NonNull final Context context) &#123;
     final PackageManager pm = context.getPackageManager();
 
     //Check if an instance of the services library is up and running.
     final Intent serviceIntent = new Intent(SERVICES_CLAZZ_NAME);
     final List&lt;ResolveInfo&gt; serviceInfos = pm.queryIntentServices(serviceIntent, PackageManager.GET_META_DATA);
-    if(serviceInfos != null &amp;&amp; !serviceInfos.isEmpty()){
+    if(serviceInfos != null &amp;&amp; !serviceInfos.isEmpty())&#123;
         Log.e(&quot;ServiceIntent&quot;, &quot;serviceInfos size = &quot; + serviceInfos.size());
-        for(ResolveInfo serviceInfo : serviceInfos) {
+        for(ResolveInfo serviceInfo : serviceInfos) &#123;
             final Bundle metaData = serviceInfo.serviceInfo.metaData;
             if (metaData == null)
                 continue;
 
             final int coreLibVersion = metaData.getInt(METADATA_KEY, INVALID_LIB_VERSION);
-            if (coreLibVersion != INVALID_LIB_VERSION &amp;&amp; coreLibVersion &gt;= VersionUtils.getCoreLibVersion(context)) {
+            if (coreLibVersion != INVALID_LIB_VERSION &amp;&amp; coreLibVersion &gt;= VersionUtils.getCoreLibVersion(context)) &#123;
                 serviceIntent.setClassName(serviceInfo.serviceInfo.packageName, serviceInfo.serviceInfo.name);
                 Log.e(&quot;ServiceIntent&quot;, METADATA_KEY + &quot; = &quot; + coreLibVersion);
                 Log.e(&quot;ServiceIntent&quot;, &quot;serviceInfo.serviceInfo.packageName = &quot; + serviceInfo.serviceInfo.packageName);
                 Log.e(&quot;ServiceIntent&quot;, &quot;serviceInfo.serviceInfo.name = &quot; + serviceInfo.serviceInfo.name);
                 return serviceIntent;
-            }
-        }
-    }
+            &#125;
+        &#125;
+    &#125;
 
-    //Didn&apos;t find any that&apos;s up and running. Enable the local one
+    //Didn&#39;t find any that&#39;s up and running. Enable the local one
     DroidPlannerService.enableDroidPlannerService(context, true);
     serviceIntent.setClass(context, DroidPlannerService.class);
     Log.e(&quot;ServiceIntent&quot;, &quot;serviceIntent action = &quot; + serviceIntent.getAction());
     Log.e(&quot;ServiceIntent&quot;, &quot;serviceIntent class = &quot; + serviceIntent.getComponent().getPackageName()
             + &quot;.&quot; + serviceIntent.getComponent().getClassName());
     return serviceIntent;
-}</code></pre><h3 id="3-虽然是改变了Intent的设置来使用已存在的Service，但是当我们继续启动，继续查询List的个数时，还是会发现个数在不断的增加，这里处理的关键就是上面的-DroidPlannerService-enableDroidPlannerService-context-true-这句话。"><a href="#3-虽然是改变了Intent的设置来使用已存在的Service，但是当我们继续启动，继续查询List的个数时，还是会发现个数在不断的增加，这里处理的关键就是上面的-DroidPlannerService-enableDroidPlannerService-context-true-这句话。" class="headerlink" title="3. 虽然是改变了Intent的设置来使用已存在的Service，但是当我们继续启动，继续查询List的个数时，还是会发现个数在不断的增加，这里处理的关键就是上面的 DroidPlannerService.enableDroidPlannerService(context, true); 这句话。"></a>3. 虽然是改变了Intent的设置来使用已存在的Service，但是当我们继续启动，继续查询List<resolveinfo>的个数时，还是会发现个数在不断的增加，这里处理的关键就是上面的 <code>DroidPlannerService.enableDroidPlannerService(context, true);</code> 这句话。</resolveinfo></h3><pre><code>public static void enableDroidPlannerService(Context context, boolean enable){
+&#125;
+</code></pre>
+<h3 id="3-虽然是改变了Intent的设置来使用已存在的Service，但是当我们继续启动，继续查询List的个数时，还是会发现个数在不断的增加，这里处理的关键就是上面的-DroidPlannerService-enableDroidPlannerService-context-true-这句话。"><a href="#3-虽然是改变了Intent的设置来使用已存在的Service，但是当我们继续启动，继续查询List的个数时，还是会发现个数在不断的增加，这里处理的关键就是上面的-DroidPlannerService-enableDroidPlannerService-context-true-这句话。" class="headerlink" title="3. 虽然是改变了Intent的设置来使用已存在的Service，但是当我们继续启动，继续查询List的个数时，还是会发现个数在不断的增加，这里处理的关键就是上面的 DroidPlannerService.enableDroidPlannerService(context, true); 这句话。"></a>3. 虽然是改变了Intent的设置来使用已存在的Service，但是当我们继续启动，继续查询List<ResolveInfo>的个数时，还是会发现个数在不断的增加，这里处理的关键就是上面的 <code>DroidPlannerService.enableDroidPlannerService(context, true);</code> 这句话。</h3><pre><code>public static void enableDroidPlannerService(Context context, boolean enable)&#123;
     final ComponentName serviceComp = new ComponentName(context, DroidPlannerService.class);
     final int newState = enable ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
             : PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
 
     context.getPackageManager().setComponentEnabledSetting(serviceComp, newState, PackageManager.DONT_KILL_APP);
-}</code></pre><h3 id="4-上面的方法通俗的讲就是是否允许这个共享进程启动，第二个参数true即允许，false即不允许，首次启动一定设为true，如果只在这里设置，当第一个app启动成功后，不断开，后面的app都可以启动成功，但是断开后，别的app都无法绑定成功，所以在共享进程Service的onDestory生命周期中调用-enableDroidPlannerService-getApplicationContext-false"><a href="#4-上面的方法通俗的讲就是是否允许这个共享进程启动，第二个参数true即允许，false即不允许，首次启动一定设为true，如果只在这里设置，当第一个app启动成功后，不断开，后面的app都可以启动成功，但是断开后，别的app都无法绑定成功，所以在共享进程Service的onDestory生命周期中调用-enableDroidPlannerService-getApplicationContext-false" class="headerlink" title="4. 上面的方法通俗的讲就是是否允许这个共享进程启动，第二个参数true即允许，false即不允许，首次启动一定设为true，如果只在这里设置，当第一个app启动成功后，不断开，后面的app都可以启动成功，但是断开后，别的app都无法绑定成功，所以在共享进程Service的onDestory生命周期中调用 enableDroidPlannerService(getApplicationContext(), false);"></a>4. 上面的方法通俗的讲就是是否允许这个共享进程启动，第二个参数true即允许，false即不允许，首次启动一定设为true，如果只在这里设置，当第一个app启动成功后，不断开，后面的app都可以启动成功，但是断开后，别的app都无法绑定成功，所以在共享进程Service的onDestory生命周期中调用 <code>enableDroidPlannerService(getApplicationContext(), false);</code></h3>
+&#125;
+</code></pre>
+<h3 id="4-上面的方法通俗的讲就是是否允许这个共享进程启动，第二个参数true即允许，false即不允许，首次启动一定设为true，如果只在这里设置，当第一个app启动成功后，不断开，后面的app都可以启动成功，但是断开后，别的app都无法绑定成功，所以在共享进程Service的onDestory生命周期中调用-enableDroidPlannerService-getApplicationContext-false"><a href="#4-上面的方法通俗的讲就是是否允许这个共享进程启动，第二个参数true即允许，false即不允许，首次启动一定设为true，如果只在这里设置，当第一个app启动成功后，不断开，后面的app都可以启动成功，但是断开后，别的app都无法绑定成功，所以在共享进程Service的onDestory生命周期中调用-enableDroidPlannerService-getApplicationContext-false" class="headerlink" title="4. 上面的方法通俗的讲就是是否允许这个共享进程启动，第二个参数true即允许，false即不允许，首次启动一定设为true，如果只在这里设置，当第一个app启动成功后，不断开，后面的app都可以启动成功，但是断开后，别的app都无法绑定成功，所以在共享进程Service的onDestory生命周期中调用 enableDroidPlannerService(getApplicationContext(), false);"></a>4. 上面的方法通俗的讲就是是否允许这个共享进程启动，第二个参数true即允许，false即不允许，首次启动一定设为true，如果只在这里设置，当第一个app启动成功后，不断开，后面的app都可以启动成功，但是断开后，别的app都无法绑定成功，所以在共享进程Service的onDestory生命周期中调用 <code>enableDroidPlannerService(getApplicationContext(), false);</code></h3>
       
     </div>
     
@@ -383,17 +393,17 @@ private final ServiceConnection o3drServicesConnection = new ServiceConnection()
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2019/11/07/Android进程间通信浅析与确保只使用一个进程服务/">Android进程间通信浅析与确保只使用一个进程服务</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">Minla</a></p>
+        <p><span>Title:</span><a href="/2019/11/07/Android%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%B5%85%E6%9E%90%E4%B8%8E%E7%A1%AE%E4%BF%9D%E5%8F%AA%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1/">Android进程间通信浅析与确保只使用一个进程服务</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
         <p><span>Created:</span>2019-11-07, 14:10:58</p>
         <p><span>Updated:</span>2019-11-07, 14:13:18</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2019/11/07/Android进程间通信浅析与确保只使用一个进程服务/" title="Android进程间通信浅析与确保只使用一个进程服务">http://yoursite.com/2019/11/07/Android进程间通信浅析与确保只使用一个进程服务/</a>
-            <span class="copy-path" data-clipboard-text="From http://yoursite.com/2019/11/07/Android进程间通信浅析与确保只使用一个进程服务/　　By Minla" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2019/11/07/Android%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%B5%85%E6%9E%90%E4%B8%8E%E7%A1%AE%E4%BF%9D%E5%8F%AA%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1/" title="Android进程间通信浅析与确保只使用一个进程服务">https://gewu851755259.github.io/2019/11/07/Android%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%B5%85%E6%9E%90%E4%B8%8E%E7%A1%AE%E4%BF%9D%E5%8F%AA%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1/</a>
+            <span class="copy-path" data-clipboard-text="From https://gewu851755259.github.io/2019/11/07/Android%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%B5%85%E6%9E%90%E4%B8%8E%E7%A1%AE%E4%BF%9D%E5%8F%AA%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
         </p>
     </div>
 
@@ -402,14 +412,14 @@ private final ServiceConnection o3drServicesConnection = new ServiceConnection()
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/11/07/Android导航栏实现之TabLayout-ViewPager/">
+                <a href="/2019/11/07/Android%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%AE%9E%E7%8E%B0%E4%B9%8BTabLayout-ViewPager/">
                     Android导航栏实现之TabLayout+ViewPager
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/09/10/糟糕的地铁/">
+                <a href="/2019/09/10/%E7%B3%9F%E7%B3%95%E7%9A%84%E5%9C%B0%E9%93%81/">
                     糟糕的地铁
                 </a>
             </div>
@@ -422,7 +432,7 @@ private final ServiceConnection o3drServicesConnection = new ServiceConnection()
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android进程间通信"><span class="toc-number">1.</span> <span class="toc-text">Android进程间通信</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-aidl文件"><span class="toc-number">1.1.</span> <span class="toc-text">一. aidl文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Stub-asInterface-android-os-IBinder-obj"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. Stub.asInterface(android.os.IBinder obj)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-asBinder"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. asBinder()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-内部静态抽象类Stub"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. 内部静态抽象类Stub</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-共享进程Service"><span class="toc-number">1.2.</span> <span class="toc-text">二. 共享进程Service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-怎么确保很多App使用的都是同一个共享进程Service，而不是又重新启动了一个新的Service，也就是正确的绑定这个服务才是最重要的"><span class="toc-number">1.3.</span> <span class="toc-text">三. 怎么确保很多App使用的都是同一个共享进程Service，而不是又重新启动了一个新的Service，也就是正确的绑定这个服务才是最重要的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-先来看-bindService-Intent-service-NonNull-ServiceConnection-conn-BindServiceFlags-int-flags-的三个参数-第二个参数可以在-（一）-中的-第1小点-中知道如何创建及作用，第三个参数一般传-Context-BIND-AUTO-CREATE-常量，所以要想做好绑定都是在第一个参数Intent的处理上"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 先来看 bindService(Intent service, @NonNull ServiceConnection conn, @BindServiceFlags int flags); 的三个参数,第二个参数可以在 （一） 中的 第1小点 中知道如何创建及作用，第三个参数一般传 Context.BIND_AUTO_CREATE 常量，所以要想做好绑定都是在第一个参数Intent的处理上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-创建Intent传递一个action，标识共享进程的，在AndroidManifest-xml文件中注册是定义；通过PackageManger和这个Intent是可以查到这个共享进程的Service启动个数的，如果已经创建，可以改变Intent的设置直接使用这个已启动的Service"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 创建Intent传递一个action，标识共享进程的，在AndroidManifest.xml文件中注册是定义；通过PackageManger和这个Intent是可以查到这个共享进程的Service启动个数的，如果已经创建，可以改变Intent的设置直接使用这个已启动的Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-虽然是改变了Intent的设置来使用已存在的Service，但是当我们继续启动，继续查询List的个数时，还是会发现个数在不断的增加，这里处理的关键就是上面的-DroidPlannerService-enableDroidPlannerService-context-true-这句话。"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 虽然是改变了Intent的设置来使用已存在的Service，但是当我们继续启动，继续查询List的个数时，还是会发现个数在不断的增加，这里处理的关键就是上面的 DroidPlannerService.enableDroidPlannerService(context, true); 这句话。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-上面的方法通俗的讲就是是否允许这个共享进程启动，第二个参数true即允许，false即不允许，首次启动一定设为true，如果只在这里设置，当第一个app启动成功后，不断开，后面的app都可以启动成功，但是断开后，别的app都无法绑定成功，所以在共享进程Service的onDestory生命周期中调用-enableDroidPlannerService-getApplicationContext-false"><span class="toc-number">1.3.4.</span> <span class="toc-text">4. 上面的方法通俗的讲就是是否允许这个共享进程启动，第二个参数true即允许，false即不允许，首次启动一定设为true，如果只在这里设置，当第一个app启动成功后，不断开，后面的app都可以启动成功，但是断开后，别的app都无法绑定成功，所以在共享进程Service的onDestory生命周期中调用 enableDroidPlannerService(getApplicationContext(), false);</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-number">1.</span> <span class="toc-text">Android进程间通信</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-aidl%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">一. aidl文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Stub-asInterface-android-os-IBinder-obj"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. Stub.asInterface(android.os.IBinder obj)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-asBinder"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. asBinder()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%86%85%E9%83%A8%E9%9D%99%E6%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BBStub"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. 内部静态抽象类Stub</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%85%B1%E4%BA%AB%E8%BF%9B%E7%A8%8BService"><span class="toc-number">1.2.</span> <span class="toc-text">二. 共享进程Service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%80%8E%E4%B9%88%E7%A1%AE%E4%BF%9D%E5%BE%88%E5%A4%9AApp%E4%BD%BF%E7%94%A8%E7%9A%84%E9%83%BD%E6%98%AF%E5%90%8C%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E8%BF%9B%E7%A8%8BService%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E5%8F%88%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8%E4%BA%86%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84Service%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%E6%AD%A3%E7%A1%AE%E7%9A%84%E7%BB%91%E5%AE%9A%E8%BF%99%E4%B8%AA%E6%9C%8D%E5%8A%A1%E6%89%8D%E6%98%AF%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84"><span class="toc-number">1.3.</span> <span class="toc-text">三. 怎么确保很多App使用的都是同一个共享进程Service，而不是又重新启动了一个新的Service，也就是正确的绑定这个服务才是最重要的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%88%E6%9D%A5%E7%9C%8B-bindService-Intent-service-NonNull-ServiceConnection-conn-BindServiceFlags-int-flags-%E7%9A%84%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0-%E7%AC%AC%E4%BA%8C%E4%B8%AA%E5%8F%82%E6%95%B0%E5%8F%AF%E4%BB%A5%E5%9C%A8-%EF%BC%88%E4%B8%80%EF%BC%89-%E4%B8%AD%E7%9A%84-%E7%AC%AC1%E5%B0%8F%E7%82%B9-%E4%B8%AD%E7%9F%A5%E9%81%93%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E5%8F%8A%E4%BD%9C%E7%94%A8%EF%BC%8C%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0%E4%B8%80%E8%88%AC%E4%BC%A0-Context-BIND-AUTO-CREATE-%E5%B8%B8%E9%87%8F%EF%BC%8C%E6%89%80%E4%BB%A5%E8%A6%81%E6%83%B3%E5%81%9A%E5%A5%BD%E7%BB%91%E5%AE%9A%E9%83%BD%E6%98%AF%E5%9C%A8%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8F%82%E6%95%B0Intent%E7%9A%84%E5%A4%84%E7%90%86%E4%B8%8A"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 先来看 bindService(Intent service, @NonNull ServiceConnection conn, @BindServiceFlags int flags); 的三个参数,第二个参数可以在 （一） 中的 第1小点 中知道如何创建及作用，第三个参数一般传 Context.BIND_AUTO_CREATE 常量，所以要想做好绑定都是在第一个参数Intent的处理上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BAIntent%E4%BC%A0%E9%80%92%E4%B8%80%E4%B8%AAaction%EF%BC%8C%E6%A0%87%E8%AF%86%E5%85%B1%E4%BA%AB%E8%BF%9B%E7%A8%8B%E7%9A%84%EF%BC%8C%E5%9C%A8AndroidManifest-xml%E6%96%87%E4%BB%B6%E4%B8%AD%E6%B3%A8%E5%86%8C%E6%98%AF%E5%AE%9A%E4%B9%89%EF%BC%9B%E9%80%9A%E8%BF%87PackageManger%E5%92%8C%E8%BF%99%E4%B8%AAIntent%E6%98%AF%E5%8F%AF%E4%BB%A5%E6%9F%A5%E5%88%B0%E8%BF%99%E4%B8%AA%E5%85%B1%E4%BA%AB%E8%BF%9B%E7%A8%8B%E7%9A%84Service%E5%90%AF%E5%8A%A8%E4%B8%AA%E6%95%B0%E7%9A%84%EF%BC%8C%E5%A6%82%E6%9E%9C%E5%B7%B2%E7%BB%8F%E5%88%9B%E5%BB%BA%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%94%B9%E5%8F%98Intent%E7%9A%84%E8%AE%BE%E7%BD%AE%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E5%B7%B2%E5%90%AF%E5%8A%A8%E7%9A%84Service"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 创建Intent传递一个action，标识共享进程的，在AndroidManifest.xml文件中注册是定义；通过PackageManger和这个Intent是可以查到这个共享进程的Service启动个数的，如果已经创建，可以改变Intent的设置直接使用这个已启动的Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%99%BD%E7%84%B6%E6%98%AF%E6%94%B9%E5%8F%98%E4%BA%86Intent%E7%9A%84%E8%AE%BE%E7%BD%AE%E6%9D%A5%E4%BD%BF%E7%94%A8%E5%B7%B2%E5%AD%98%E5%9C%A8%E7%9A%84Service%EF%BC%8C%E4%BD%86%E6%98%AF%E5%BD%93%E6%88%91%E4%BB%AC%E7%BB%A7%E7%BB%AD%E5%90%AF%E5%8A%A8%EF%BC%8C%E7%BB%A7%E7%BB%AD%E6%9F%A5%E8%AF%A2List%E7%9A%84%E4%B8%AA%E6%95%B0%E6%97%B6%EF%BC%8C%E8%BF%98%E6%98%AF%E4%BC%9A%E5%8F%91%E7%8E%B0%E4%B8%AA%E6%95%B0%E5%9C%A8%E4%B8%8D%E6%96%AD%E7%9A%84%E5%A2%9E%E5%8A%A0%EF%BC%8C%E8%BF%99%E9%87%8C%E5%A4%84%E7%90%86%E7%9A%84%E5%85%B3%E9%94%AE%E5%B0%B1%E6%98%AF%E4%B8%8A%E9%9D%A2%E7%9A%84-DroidPlannerService-enableDroidPlannerService-context-true-%E8%BF%99%E5%8F%A5%E8%AF%9D%E3%80%82"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 虽然是改变了Intent的设置来使用已存在的Service，但是当我们继续启动，继续查询List的个数时，还是会发现个数在不断的增加，这里处理的关键就是上面的 DroidPlannerService.enableDroidPlannerService(context, true); 这句话。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%8A%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E9%80%9A%E4%BF%97%E7%9A%84%E8%AE%B2%E5%B0%B1%E6%98%AF%E6%98%AF%E5%90%A6%E5%85%81%E8%AE%B8%E8%BF%99%E4%B8%AA%E5%85%B1%E4%BA%AB%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8%EF%BC%8C%E7%AC%AC%E4%BA%8C%E4%B8%AA%E5%8F%82%E6%95%B0true%E5%8D%B3%E5%85%81%E8%AE%B8%EF%BC%8Cfalse%E5%8D%B3%E4%B8%8D%E5%85%81%E8%AE%B8%EF%BC%8C%E9%A6%96%E6%AC%A1%E5%90%AF%E5%8A%A8%E4%B8%80%E5%AE%9A%E8%AE%BE%E4%B8%BAtrue%EF%BC%8C%E5%A6%82%E6%9E%9C%E5%8F%AA%E5%9C%A8%E8%BF%99%E9%87%8C%E8%AE%BE%E7%BD%AE%EF%BC%8C%E5%BD%93%E7%AC%AC%E4%B8%80%E4%B8%AAapp%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F%E5%90%8E%EF%BC%8C%E4%B8%8D%E6%96%AD%E5%BC%80%EF%BC%8C%E5%90%8E%E9%9D%A2%E7%9A%84app%E9%83%BD%E5%8F%AF%E4%BB%A5%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F%EF%BC%8C%E4%BD%86%E6%98%AF%E6%96%AD%E5%BC%80%E5%90%8E%EF%BC%8C%E5%88%AB%E7%9A%84app%E9%83%BD%E6%97%A0%E6%B3%95%E7%BB%91%E5%AE%9A%E6%88%90%E5%8A%9F%EF%BC%8C%E6%89%80%E4%BB%A5%E5%9C%A8%E5%85%B1%E4%BA%AB%E8%BF%9B%E7%A8%8BService%E7%9A%84onDestory%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%AD%E8%B0%83%E7%94%A8-enableDroidPlannerService-getApplicationContext-false"><span class="toc-number">1.3.4.</span> <span class="toc-text">4. 上面的方法通俗的讲就是是否允许这个共享进程启动，第二个参数true即允许，false即不允许，首次启动一定设为true，如果只在这里设置，当第一个app启动成功后，不断开，后面的app都可以启动成功，但是断开后，别的app都无法绑定成功，所以在共享进程Service的onDestory生命周期中调用 enableDroidPlannerService(getApplicationContext(), false);</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -478,7 +488,7 @@ private final ServiceConnection o3drServicesConnection = new ServiceConnection()
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/11/07/Android导航栏实现之TabLayout-ViewPager/" title="Pre: Android导航栏实现之TabLayout+ViewPager">
+            <a href="/2019/11/07/Android%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%AE%9E%E7%8E%B0%E4%B9%8BTabLayout-ViewPager/" title="Pre: Android导航栏实现之TabLayout+ViewPager">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -486,13 +496,13 @@ private final ServiceConnection o3drServicesConnection = new ServiceConnection()
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/09/10/糟糕的地铁/" title="Next: 糟糕的地铁">
+            <a href="/2019/09/10/%E7%B3%9F%E7%B3%95%E7%9A%84%E5%9C%B0%E9%93%81/" title="Next: 糟糕的地铁">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/2016深圳小梅沙-2019回忆记录/">2016深圳小梅沙-2019回忆记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/Android导航栏实现之TabLayout-ViewPager/">Android导航栏实现之TabLayout+ViewPager</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/Android进程间通信浅析与确保只使用一个进程服务/">Android进程间通信浅析与确保只使用一个进程服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/10/糟糕的地铁/">糟糕的地铁</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/04/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/04/第一篇博客/">第一篇博客</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/02/25/%E5%85%AC%E5%8F%B8%E8%81%9A%E9%A4%90/">公司聚餐</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/02/25/2021-FLAG/">2021-FLAG</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/29/MVC%E3%80%81MVP%E3%80%81MVVM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">MVC|MVP|MVVM学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/2016%E6%B7%B1%E5%9C%B3%E5%B0%8F%E6%A2%85%E6%B2%99-2019%E5%9B%9E%E5%BF%86%E8%AE%B0%E5%BD%95/">2016深圳小梅沙-2019回忆记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/Android%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%AE%9E%E7%8E%B0%E4%B9%8BTabLayout-ViewPager/">Android导航栏实现之TabLayout+ViewPager</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/Android%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%B5%85%E6%9E%90%E4%B8%8E%E7%A1%AE%E4%BF%9D%E5%8F%AA%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1/">Android进程间通信浅析与确保只使用一个进程服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/10/%E7%B3%9F%E7%B3%95%E7%9A%84%E5%9C%B0%E9%93%81/">糟糕的地铁</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/04/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/04/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">第一篇博客</a></li></ul>
 
 
 
@@ -506,7 +516,7 @@ private final ServiceConnection o3drServicesConnection = new ServiceConnection()
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016-2019 Minla
+                2019-2021 Minla
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
